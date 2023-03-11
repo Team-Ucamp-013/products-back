@@ -1,9 +1,9 @@
 const express = require('express');
-
+const dotenv = require('dotenv');
+dotenv.config()
 const app = express();
-const PORT = 4001
 app.use(express.json());
-
+console.log(process.env.HOLA)
 const { productRouter } = require('./api')
 
 app.use('/products', productRouter)
@@ -14,6 +14,6 @@ app.use('/products', productRouter)
 //   })
 // })
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(process.env.port, () => {
+  console.log(`Server is running on port ${process.env.port}`);
 })
